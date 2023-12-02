@@ -1,10 +1,8 @@
 "use strict";
 
-// New try
+// First try
 
 const spinner = document.querySelector("#spinner");
-const previous = document.querySelector("#previous");
-const next = document.querySelector("#next");
 const pokemonList = document.querySelector("#pokemonList");
 const btnHeader = document.querySelectorAll(".btn-header");
 
@@ -12,57 +10,55 @@ let urlApi = `https://pokeapi.co/api/v2/pokemon/`;
 let limit = 20;
 let offset = 1;
 
-previous.addEventListener("click", () => {
-  if (offset != 1) {
-    offset -= 21;
-    removeChildNodes("pokemon");
-    fetchPokemons(offset, limit);
-  }
-});
-
-next.addEventListener("click", () => {
-  offset += 21;
-  removeChildNodes("pokemon");
-  fetchPokemons(offset, limit);
-});
-
-function fetchPokemon() {
+function fetchPokemon(id) {
   const loading = document.querySelector(".loading");
   loading.classList.remove("dont-show");
   setTimeout(async () => {
     try {
-      let res = await fetch(urlApi);
-      data = await res.json();
+      const res = await fetch(urlApi + id);
+      data = await res.json(data.results, data.previous, data.next);
       showPokemon(data);
     } catch (error) {
       console.log(`Error fetching Pokemon : ${error.message}`);
     } finally {
+      loading.classList.add("dont-show");
     }
   });
 }
 
-function fetchPokemons(offset, limit) {
+async function fetchPokemons(offset, limit) {
+  removeChildNodes(pokemonList);
+  const promises = [];
   for (let i = offset; i <= offset + limit; i++) {
-    fetchPokemon(i);
+    promises.push(fetchPokemon(i));
   }
+  await Promise.all(promises);
 }
 
 function showPokemon(data) {
+  // Desplegar los tipos de los pokemon que tienen mas de un tipo
   let types = data.types.map(
     (type) => `<p class="${type.type.name} type">${type.type.name}</p>`
   );
   types = types.join("");
-
+  // Mostrar la ID de los pokemon con ceros delante
   let dataId = data.id.toString();
   if (dataId.length === 1) {
     dataId = "00" + dataId;
   } else if (dataId.length === 2) {
     dataId = "0" + dataId;
   }
+  // Dividir el peso y la altura entre 10
+  const height = (data.height / 10).toFixed(1);
+  const weight = (data.weight / 10).toFixed(1);
 
+  // Crear la carta de cada pokemon en orden y añadirla al HTML
   const card = document.createElement("div");
   card.classList.add("pokemon");
   card.innerHTML = `
+    <div class="loading spinner-border text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
     <p class="pokemon-id-back">#${dataId}</p>
     <div class="pokemon-image">
       <img
@@ -75,17 +71,19 @@ function showPokemon(data) {
         <p class="pokemon-id">#${dataId}</p>
         <h2 class="pokemon-name">${data.name}</h2>
       </div>
-      <div class="pokemon-types">
+      <span class="pokemon-types">
         ${types}
-      </div>
+      </span>
       <div class="pokemon-body">
-        <p class="body">${data.height}m</p>
-        <p class="body">${data.weight}kg</p>
+        <p class="body">${height}m</p>
+        <p class="body">${weight}kg</p>
       </div>
     </div>
     `;
   pokemonList.append(card);
 }
+
+// Hacer que los botones muestren los pokemon de cada tipo
 
 btnHeader.forEach((btn) =>
   btn.addEventListener("click", (event) => {
@@ -109,9 +107,3 @@ btnHeader.forEach((btn) =>
     }
   })
 );
-
-function removeChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}

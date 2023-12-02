@@ -9,7 +9,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/pokeapi/styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
 
     <title>APIMon</title>
   </head>
@@ -80,20 +80,62 @@
             <button class="btn btn-header fairy" id="fairy">Fairy</button>
           </li>
         </ul>
+        <!-- <div class="search-wrapper">
+          <div class="search-wrap">
+            <img
+              src="./assets/search.svg"
+              alt="search icon"
+              class="search-icon"
+            />
+            <input
+              type="text"
+              class="search-input body3-fonts"
+              placeholder="Search"
+              id="search-input"
+            />
+            <img
+              src="./assets/cross.svg"
+              alt="cross icon"
+              class="search-close-icon"
+              id="search-close-icon"
+            />
+          </div>
+          <div class="sort-wrapper">
+            <div class="sort-wrap">
+              <img
+                src="./assets/sorting.svg"
+                alt="sorting"
+                class="sort-icon"
+                id="sort-icon"
+              />
+            </div>
+            <div class="filter-wrapper">
+              <p class="body2-fonts">Sort by:</p>
+              <div class="filter-wrap">
+                <div>
+                  <input
+                    type="radio"
+                    id="number"
+                    name="filters"
+                    value="number"
+                    checked
+                  />
+                  <label for="number" class="body3-fonts">Number</label>
+                </div>
+                <div>
+                  <input type="radio" id="name" name="filters" value="name" />
+                  <label for="name" class="body3-fonts">Name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </nav>
     </header>
     <main>
-      <nav class="pagination">
-        <ul class="pagination">
-          <li id="previous" class="page-item">
-            <a class="page-link" href="#">Previous</a>
-          </li>
-          <li id="next" class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+      <aside></aside>
 
+      <section></section>
       <div id="all">
         <div class="pokemon-all" id="pokemonList">
           <!-- <div class="pokemon">
@@ -120,48 +162,19 @@
           </div> -->
         </div>
 
-        <div class="loading spinner-border text-warning" role="status">
+        <!-- <div class="loading spinner-border text-warning" role="status">
           <span class="visually-hidden">Loading...</span>
-        </div>
-
-        <nav class="pagination">
-          <ul class="pagination">
-            <li id="previous" class="page-item">
-              <a class="page-link" href="#">Previous</a>
-            </li>
-            <li id="next" class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+        </div> -->
+        <!-- <div id="not-found-message">Pokemon not found</div> -->
+        <aside></aside>
       </div>
     </main>
-
-    <section class="pokegen">
-      <h1>Generador Aleatorio de Pokemon</h1>
-      <button id="pokeRandom">Pokemon Randomizer</button>
-      <div class="mostrarPokemon"></div>
-      <img src="" alt="" id="pokerandom" />
-      <p id="parrafo"></p>
-
-      <div class="no-mostrar cargando"></div>
-    </section>
-
-    <!-- <form action="">
-      <fieldset>
-        <label for=""></label>
-        <select name="" id=""></select>
-        <select name="" id=""></select>
-      </fieldset>
-      <fieldset></fieldset>
-      <fieldset></fieldset>
-    </form> -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="/pokeapi/index.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>
