@@ -232,7 +232,7 @@ main {
   margin: 0 auto;
 }
 
-.pokemon-all {
+.pokemonList {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -247,12 +247,12 @@ main {
 /* responsive */
 
 @media screen and (min-width: 470px) {
-  .pokemon-all {
+  .pokemonList {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (min-width: 700px) {
-  .pokemon-all {
+  .pokemonList {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

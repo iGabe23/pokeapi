@@ -80,7 +80,7 @@
             <button class="btn btn-header fairy" id="fairy">Fairy</button>
           </li>
         </ul>
-        <!-- <div class="search-wrapper">
+        <div class="search-wrapper">
           <div class="search-wrap">
             <img
               src="./assets/search.svg"
@@ -129,7 +129,11 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
+        <div class="btns">
+          <button id="previousBtn">Previous</button>
+          <button id="nextBtn">Next</button>
+        </div>
       </nav>
     </header>
     <main>
@@ -137,36 +141,48 @@
 
       <section></section>
       <div id="all">
-        <div class="pokemon-all" id="pokemonList">
-          <!-- <div class="pokemon">
-            <p class="pokemon-id-back">#035</p>
-            <div class="pokemon-image">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
-                alt="name"
-              />
-            </div>
-            <div class="pokemon-info">
-              <div class="name-container">
-                <p class="pokemon-id">#035</p>
-                <h2 class="pokemon-name">Clefairy</h2>
-              </div>
-              <div class="pokemon-types">
-                <p class="fairy type">FAIRY</p>
-              </div>
-              <div class="pokemon-body">
-                <p class="body">0.6m</p>
-                <p class="body">7.5kg</p>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        <div class="pokemonList" id="pokemonList"></div>
+        <aside>
+          <div
+            id="spinner"
+            class="spinner-grow text-warning visually-hidden"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
 
-        <!-- <div class="loading spinner-border text-warning" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div> -->
-        <!-- <div id="not-found-message">Pokemon not found</div> -->
-        <aside></aside>
+          <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </main>
 
@@ -175,6 +191,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="/index.js"></script>
+    <script src="/try2.js"></script>
   </body>
 </html>

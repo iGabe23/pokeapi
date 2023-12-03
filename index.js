@@ -1,31 +1,52 @@
 "use strict";
 
-// First try
-
-const spinner = document.querySelector("#spinner");
+document.addEventListener("DOMContentLoaded", () => {
+  fetchPokemon("https://pokeapi.co/api/v2/pokemon/");
+});
+let URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20";
 const pokemonList = document.querySelector("#pokemonList");
-const btnHeader = document.querySelectorAll(".btn-header");
+let contador = 0;
 
-let urlApi = `https://pokeapi.co/api/v2/pokemon/`;
-let limit = 20;
-let offset = 1;
-
-function fetchPokemon(id) {
-  const loading = document.querySelector(".loading");
-  loading.classList.remove("dont-show");
+// fetch pokemon by url and toggle spinner
+function fetchPokemon(url) {
   setTimeout(async () => {
     try {
-      const res = await fetch(urlApi + id);
-      data = await res.json(data.results, data.previous, data.next);
-      showPokemon(data);
+      switchSpinner();
+      let data = await fetch(url);
+      data = await data.json();
+      showPokemon(
+        data.results,
+        data.types,
+        data.previous,
+        data.next,
+        data.id,
+        data.height,
+        data.weight
+      );
     } catch (error) {
-      console.log(`Error fetching Pokemon : ${error.message}`);
+      console.log(error);
     } finally {
-      loading.classList.add("dont-show");
+      switchSpinner();
     }
-  });
+  }, 1000);
+}
+// Spinner function
+function switchSpinner() {
+  const $spinner = document.getElementById("spinner");
+  $spinner.classList.toggle("d-none");
 }
 
+const nextBtn = document.getElementById("nextBtn");
+nextBtn.addEventListener("click", () => {
+  contador += 20;
+  URL = `https://pokeapi.co/api/v2/pokemon?offset=${contador}&limit=20`;
+  fetchPokemon();
+  disable(contador);
+});
+
+// Set limit for pokemon
+let limit = 20;
+let offset = 1;
 async function fetchPokemons(offset, limit) {
   removeChildNodes(pokemonList);
   const promises = [];
@@ -36,11 +57,17 @@ async function fetchPokemons(offset, limit) {
 }
 
 function showPokemon(data) {
+  // Dividir el peso y la altura entre 10
+  const height = (data.height / 10).toFixed(1);
+  const weight = (data.weight / 10).toFixed(1);
+
   // Desplegar los tipos de los pokemon que tienen mas de un tipo
-  let types = data.types.map(
+
+  let pokemonTypes = data.types.map(
     (type) => `<p class="${type.type.name} type">${type.type.name}</p>`
   );
-  types = types.join("");
+  pokemonTypes = pokemonTypes.join("");
+
   // Mostrar la ID de los pokemon con ceros delante
   let dataId = data.id.toString();
   if (dataId.length === 1) {
@@ -48,17 +75,11 @@ function showPokemon(data) {
   } else if (dataId.length === 2) {
     dataId = "0" + dataId;
   }
-  // Dividir el peso y la altura entre 10
-  const height = (data.height / 10).toFixed(1);
-  const weight = (data.weight / 10).toFixed(1);
 
   // Crear la carta de cada pokemon en orden y añadirla al HTML
   const card = document.createElement("div");
   card.classList.add("pokemon");
   card.innerHTML = `
-    <div class="loading spinner-border text-warning" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
     <p class="pokemon-id-back">#${dataId}</p>
     <div class="pokemon-image">
       <img
@@ -72,7 +93,7 @@ function showPokemon(data) {
         <h2 class="pokemon-name">${data.name}</h2>
       </div>
       <span class="pokemon-types">
-        ${types}
+        ${pokemonTypes}
       </span>
       <div class="pokemon-body">
         <p class="body">${height}m</p>
@@ -85,6 +106,7 @@ function showPokemon(data) {
 
 // Hacer que los botones muestren los pokemon de cada tipo
 
+const btnHeader = document.querySelectorAll(".btn-header");
 btnHeader.forEach((btn) =>
   btn.addEventListener("click", (event) => {
     const btnId = event.currentTarget.id;
@@ -92,7 +114,7 @@ btnHeader.forEach((btn) =>
     pokemonList.innerHTML = "";
 
     for (let i = offset; i <= offset + limit; i++) {
-      fetch(urlApi + i)
+      fetch("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((res) => res.json())
         .then((data) => {
           if (btnId === "show-all") {
@@ -107,3 +129,12 @@ btnHeader.forEach((btn) =>
     }
   })
 );
+
+function disable(contador) {
+  if (contador === 0) {
+    previousBtn.setAttribute("disabled", "");
+  } else {
+    previousBtn.removeAttribute("disabled");
+  }
+}
+disable(contador);
