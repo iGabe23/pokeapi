@@ -8,7 +8,7 @@ async function getPokemon(id) {
 
 // Funcion con ciclo encargada de iterar los datos de los pokemon
 async function drawPokemon() {
-  for (let i = 1; i < 20; i++) {
+  for (let i = 1; i <= 20; i++) {
     await getPokemon(i);
   }
 }
