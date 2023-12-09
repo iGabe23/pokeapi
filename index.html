@@ -14,10 +14,64 @@
     <title>APIMon</title>
   </head>
   <body>
-    <header>
+    <header class="container">
       <nav>
-        <img src="assets/pokelogo.png" alt="pokelogo" class="logo" />
-        <ul class="nav-list">
+        <a href="/">
+          <img src="assets/pokelogo.png" alt="pokelogo" class="logo" />
+        </a>
+
+        <div class="search-wrapper">
+          <div class="search-wrap">
+            <img
+              src="./assets/search.svg"
+              alt="search icon"
+              class="search-icon"
+            />
+            <input
+              type="text"
+              class="search-input body3-fonts"
+              placeholder="Search"
+              id="search-input"
+            />
+            <img
+              src="./assets/cross.svg"
+              alt="cross icon"
+              class="search-close-icon"
+              id="search-close-icon"
+            />
+          </div>
+          <div class="sort-wrapper">
+            <div class="sort-wrap">
+              <img
+                src="./assets/sorting.svg"
+                alt="sorting"
+                class="sort-icon"
+                id="sort-icon"
+              />
+            </div>
+            <div class="filter-wrapper">
+              <p class="body2-fonts">Sort by:</p>
+              <div class="filter-wrap">
+                <div>
+                  <input
+                    type="radio"
+                    id="number"
+                    name="filters"
+                    value="number"
+                    checked
+                  />
+                  <label for="number" class="body3-fonts">Number</label>
+                </div>
+                <div>
+                  <input type="radio" id="name" name="filters" value="name" />
+                  <label for="name" class="body3-fonts">Name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <ul class="nav-list">
           <li class="nav-list__item">
             <button class="btn btn-header" id="show-all">Show all</button>
           </li>
@@ -79,57 +133,8 @@
           <li class="nav-list__item">
             <button class="btn btn-header fairy" id="fairy">Fairy</button>
           </li>
-        </ul>
-        <div class="search-wrapper">
-          <div class="search-wrap">
-            <img
-              src="./assets/search.svg"
-              alt="search icon"
-              class="search-icon"
-            />
-            <input
-              type="text"
-              class="search-input body3-fonts"
-              placeholder="Search"
-              id="search-input"
-            />
-            <img
-              src="./assets/cross.svg"
-              alt="cross icon"
-              class="search-close-icon"
-              id="search-close-icon"
-            />
-          </div>
-          <div class="sort-wrapper">
-            <div class="sort-wrap">
-              <img
-                src="./assets/sorting.svg"
-                alt="sorting"
-                class="sort-icon"
-                id="sort-icon"
-              />
-            </div>
-            <div class="filter-wrapper">
-              <p class="body2-fonts">Sort by:</p>
-              <div class="filter-wrap">
-                <div>
-                  <input
-                    type="radio"
-                    id="number"
-                    name="filters"
-                    value="number"
-                    checked
-                  />
-                  <label for="number" class="body3-fonts">Number</label>
-                </div>
-                <div>
-                  <input type="radio" id="name" name="filters" value="name" />
-                  <label for="name" class="body3-fonts">Name</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </ul> -->
+
         <div class="btns">
           <button id="previousBtn">Previous</button>
           <button id="nextBtn">Next</button>
@@ -138,8 +143,8 @@
     </header>
     <main>
       <aside></aside>
-
       <section></section>
+
       <div id="all">
         <div class="pokemonList" id="pokemonList"></div>
         <aside>
