@@ -11,184 +11,44 @@
     />
     <link rel="stylesheet" href="/styles.css" />
 
-    <title>APIMon</title>
+    <title>Pokédex</title>
   </head>
   <body>
-    <header class="container">
-      <nav>
-        <a href="/">
-          <img src="assets/pokelogo.png" alt="pokelogo" class="logo" />
-        </a>
-
-        <div class="search-wrapper">
-          <div class="search-wrap">
-            <img
-              src="./assets/search.svg"
-              alt="search icon"
-              class="search-icon"
-            />
-            <input
-              type="text"
-              class="search-input body3-fonts"
-              placeholder="Search"
-              id="search-input"
-            />
-            <img
-              src="./assets/cross.svg"
-              alt="cross icon"
-              class="search-close-icon"
-              id="search-close-icon"
-            />
-          </div>
-          <div class="sort-wrapper">
-            <div class="sort-wrap">
-              <img
-                src="./assets/sorting.svg"
-                alt="sorting"
-                class="sort-icon"
-                id="sort-icon"
-              />
-            </div>
-            <div class="filter-wrapper">
-              <p class="body2-fonts">Sort by:</p>
-              <div class="filter-wrap">
-                <div>
-                  <input
-                    type="radio"
-                    id="number"
-                    name="filters"
-                    value="number"
-                    checked
-                  />
-                  <label for="number" class="body3-fonts">Number</label>
-                </div>
-                <div>
-                  <input type="radio" id="name" name="filters" value="name" />
-                  <label for="name" class="body3-fonts">Name</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- <ul class="nav-list">
-          <li class="nav-list__item">
-            <button class="btn btn-header" id="show-all">Show all</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header normal" id="normal">Normal</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header fire" id="fire">Fire</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header water" id="water">Water</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header grass" id="grass">Grass</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header electric" id="electric">
-              Electric
-            </button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header ice" id="ice">Ice</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header fighting" id="fighting">
-              Fighting
-            </button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header poison" id="poison">Poison</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header ground" id="ground">Ground</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header flying" id="flying">Flying</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header psychic" id="psychic">Psychic</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header bug" id="bug">Bug</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header rock" id="rock">Rock</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header ghost" id="ghost">Ghost</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header dark" id="dark">Dark</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header dragon" id="dragon">Dragon</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header steel" id="steel">Steel</button>
-          </li>
-          <li class="nav-list__item">
-            <button class="btn btn-header fairy" id="fairy">Fairy</button>
-          </li>
-        </ul> -->
-
-        <div class="btns">
-          <button id="previousBtn">Previous</button>
-          <button id="nextBtn">Next</button>
-        </div>
-      </nav>
-    </header>
     <main>
-      <aside></aside>
-      <section></section>
+      <section>
+        <form class="form">
+          <input
+            type="search"
+            class="input__search"
+            placeholder="Name or Number"
+            required
+          />
+        </form>
+      </section>
+      <section>
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/643.gif"
+          alt="pokemon"
+          class="pokemon__imagen"
+        />
 
-      <div id="all">
-        <div class="pokemonList" id="pokemonList"></div>
-        <aside>
-          <div
-            id="spinner"
-            class="spinner-grow text-warning visually-hidden"
-            role="status"
-          >
-            <span class="visually-hidden">Loading...</span>
-          </div>
+        <h1 class="pokemon__data">
+          <span class="pokemon__number">#025</span>
+          <span class="pokemon__name">- pikachu</span>
+        </h1>
 
-          <div class="modal" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-
-                  <button type="button" class="btn btn-primary">
-                    Save changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
+        <img src="assets/PokeapiGabe23.png" alt="Pokédex" class="pokedex" />
+      </section>
+      <section>
+        <div class="arrow__buttons">
+          <button class="arrow btn-prev">&lt;</button>
+          <button class="arrow btn-next">></button>
+        </div>
+        <div class="buttons">
+          <button class="button btn-prev">>Prev &lt;</button>
+          <button class="button btn-next">>Next &lt;</button>
+        </div>
+      </section>
     </main>
 
     <script
