@@ -86,21 +86,41 @@ main {
 
 .form {
   position: relative;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
   /* background-color: var(--boder-test); */
   width: 100%;
 }
 
-.input__search {
+.search__bar {
+  margin: auto;
+  margin-bottom: 2%;
   width: 95%;
-  padding: 3%;
-  outline: none;
+  padding: 2%;
   border: 2px solid #333;
   border-radius: 13px;
   font-weight: 600;
   color: #3a444d;
   font-size: clamp(13px, 5vw, 1rem);
   box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
+  outline: none;
+}
+.input__search {
+  display: grid;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  padding-left: 30px;
+  text-align: start;
+}
+
+.icon__search {
+  bottom: 30%;
+  left: 1%;
+  position: absolute;
+  text-align: start;
+  width: 4%;
+  margin-bottom: 1px;
 }
 
 /* pokedex btns */
@@ -118,7 +138,13 @@ main {
 .arrow {
   width: 50%;
   color: transparent;
-  font-size: clamp(13px, 5vw, 5px);
+  font-size: clamp(13px, 1vw, 7px);
+  background-color: transparent;
+  outline: none;
+}
+.arrow:active {
+  box-shadow: inset -1px 1px 0 #222;
+  font-size: 0.9rem;
 }
 
 .buttons {
@@ -142,6 +168,11 @@ main {
   color: white;
   background-color: #444;
   box-shadow: -3px 4px 0 #222, -5px 7px 0 #000;
+}
+
+.button:active {
+  box-shadow: inset -4px 4px 0 #222;
+  font-size: 0.9rem;
 }
 
 /* Preparar Lista */

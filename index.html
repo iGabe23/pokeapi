@@ -10,20 +10,26 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/styles.css" />
-
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>Pokédex</title>
   </head>
   <body>
     <main>
       <section>
-        <form class="form">
-          <input
-            type="search"
-            class="input__search"
-            placeholder="Name or Number"
-            required
-          />
-        </form>
+        <div class="search__bar">
+          <form class="form">
+            <i class="bx bx-search-alt icon__search"></i>
+            <input
+              type="search"
+              class="input__search"
+              placeholder="Name or Number"
+              required
+            />
+          </form>
+        </div>
       </section>
       <section>
         <img
